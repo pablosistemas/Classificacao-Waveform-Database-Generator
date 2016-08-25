@@ -60,11 +60,11 @@ plotaGrafico <- function(nomeArquivo, serieReal, serieValidacao){
   # captura indice do numero da classe da onda a ser plotada
   idx <- regexpr("[[:digit:]]",nomeArquivo)
   
-  pdf(file=nomeArquivo)
+  png(file=nomeArquivo)
   plot(serieReal,t='o',lwd=2,col='red',ylab="amplitude",xlab="amostra")
   lines(serieValidacao,t='o',lwd=2,col='blue')
   legend("topright",legend=c("real","classificacao"),fill=c('red','blue'))
-  title(main=paste("Media das curvas da classe ",substr(nomeArquivo,idx,idx)))
+  title(main=paste("KNN - Media das curvas da classe ",substr(nomeArquivo,idx,idx)))
   dev.off()
 }
 
@@ -72,10 +72,10 @@ plotaGrafico <- function(nomeArquivo, serieReal, serieValidacao){
 # compara as curvas dos dados de treinamento com as classificacoes do metodo
 
 # grava no arquivo 'train_class_group0.pdf' a comparacao da classificacao do grupo 0
-plotaGrafico("wave_knn_group0.pdf",t(geral[1,1:40]),t(toPlot[1,1:40]))
+plotaGrafico("wave_knn_group0.png",t(geral[1,1:40]),t(toPlot[1,1:40]))
 
 # grava no arquivo 'train_class_group1.pdf' a comparacao da classificacao do grupo 1
-plotaGrafico("wave_knn_group1.pdf",t(geral[2,1:40]),t(toPlot[2,1:40]))
+plotaGrafico("wave_knn_group1.png",t(geral[2,1:40]),t(toPlot[2,1:40]))
 
 # grava no arquivo 'train_class_group2.pdf' a comparacao da classificacao do grupo 2
-plotaGrafico("wave_knn_group2.pdf",t(geral[3,1:40]),t(toPlot[3,1:40]))
+plotaGrafico("wave_knn_group2.png",t(geral[3,1:40]),t(toPlot[3,1:40]))

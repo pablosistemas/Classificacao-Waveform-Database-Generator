@@ -54,21 +54,21 @@ plotaGrafico <- function(nomeArquivo, serieEsperada, serieValidacao){
   idx <-regexpr("[[:digit:]]",nomeArquivo)
   
   # abre dispositivo externo para escrita em arquivo
-  pdf(file=nomeArquivo)
+  png(file=nomeArquivo)
   plot(serieEsperada,t='o',lwd=2,col='red',ylab="amplitude",xlab="amostra")
   lines(serieValidacao,t='o',lwd=2,col='blue')
   legend("topright",legend=c("real","classificacao"),fill=c('red','blue'))
-  title(main=paste("Media das curvas da classe ",substr(nomeArquivo,idx,idx)))
+  title(main=paste("NNET - Media das curvas da classe ",substr(nomeArquivo,idx,idx)))
   dev.off()
 }
 
 # compara as curvas dos dados de treinamento com as classificacoes do metodo
 
 # grava no arquivo 'wave_nnet_group0.pdf' a comparacao da classificacao do grupo 0
-plotaGrafico("wave_nnet_group0.pdf",t(esperado[1,1:40]),t(predito[1,1:40]))
+plotaGrafico("wave_nnet_group0.png",t(esperado[1,1:40]),t(predito[1,1:40]))
 
 # grava no arquivo 'wave_nnet_group1.pdf' a comparacao da classificacao do grupo 1
-plotaGrafico("wave_nnet_group1.pdf",t(esperado[2,1:40]),t(predito[2,1:40]))
+plotaGrafico("wave_nnet_group1.png",t(esperado[2,1:40]),t(predito[2,1:40]))
 
 # grava no arquivo 'wave_nnet_group2.pdf' a comparacao da classificacao do grupo 2
-plotaGrafico("wave_nnet_group2.pdf",t(esperado[3,1:40]),t(predito[3,1:40]))
+plotaGrafico("wave_nnet_group2.png",t(esperado[3,1:40]),t(predito[3,1:40]))
