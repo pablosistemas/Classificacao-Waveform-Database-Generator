@@ -3,7 +3,10 @@
 setwd("~/Documents/pablo/estagio/venturian")
 
 # carrega biblioteca do metodo 'knn'
-library("class")
+if(!require(class)){
+  install.packages('class')
+}
+library(class)
 
 # le o arquivo de formas de onda com ruido
 datanoised <- read.csv('waveform-+noise.data')

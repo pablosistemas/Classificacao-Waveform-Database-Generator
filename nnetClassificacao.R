@@ -3,6 +3,9 @@
 setwd("~/Documents/pablo/estagio/venturian")
 
 # carrega biblioteca do metodo 'nnet'
+if(!require(nnet)){
+  install.packages('nnet')
+}
 library(nnet)
 
 # le o arquivo de formas de onda com ruido
